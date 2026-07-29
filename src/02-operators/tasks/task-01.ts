@@ -14,3 +14,13 @@
  *  - Final payment
  * 2. Display the calculation results.
  */
+
+const friedriceprice : number = 18000
+const drinksprice : number = 5000
+const discountPercentage : number = 10000
+const totalpayment : number = (friedriceprice * 3) + (drinksprice * 2) - (discountPercentage)
+
+console.log ("FriedRicePrice = ", friedriceprice)
+console.log ("DrinksPrice = ", drinksprice)
+console.log ("Discount = ", discountPercentage)
+console.log ("TotalPayment = ", totalpayment)

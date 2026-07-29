@@ -26,7 +26,7 @@ type Registration = {
 
 const registration1: Registration = {
     studentId: "ST2026045",
-    fullName: "Nur Putri",
+    fullName: "Lewis Hamilton",
     gradeLevel: "10th Grade",
     courseId: "CS101",
     courseTitle: "Introduction to Programming",
