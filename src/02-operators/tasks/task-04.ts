@@ -23,41 +23,27 @@
 
  */
 
-const keyboardPrice = 850000;
-const mousePrice = 275000;
-const mousePadPrice = 120000;
-const mouseQty = 2;
-const keyboardQty = 1;
-const mousePadQty = 1;
-const isPremiumMember = true;
+const keyboardPrice : number = 850000
+const mousePrice : number = 275000
+const mousepadPrice : number = 120000
+const keyboardQTY : number = 1
+const mouseQTY : number = 2
+const mousepadQTY : number = 1
+
+const isPremium : boolean = true
 
 const subtotal =
-  (keyboardPrice * keyboardQty) +
-  (mousePrice * mouseQty) +
-  (mousePadPrice * mousePadQty);
+(keyboardPrice * keyboardQTY) +
+(mousePrice * mouseQTY) +
+(mousepadPrice * mousepadQTY);
 
-let totalItems = 0;
+const discount : number = subtotal * 0.1
+const totalItems : number = keyboardQTY + mouseQTY + mousepadQTY
 
-for (let i = 0; i < keyboardQty; i++) {
-  totalItems++;
-}
+const finalPayment : number = subtotal > 1000000 ? subtotal - discount : subtotal
 
-for (let i = 0; i < mouseQty; i++) {
-  totalItems++;
-}
-
-for (let i = 0; i < mousePadQty; i++) {
-  totalItems++;
-}
-
-const hasDiscount = subtotal > 1000000;
-const discount = hasDiscount ? subtotal * 0.10 : 0;
-const shippingCost = isPremiumMember ? 0 : 20000;
-const finalPayment = subtotal - discount + shippingCost;
-
-console.log("Subtotal       : Rp" + subtotal.toLocaleString("id-ID"));
-console.log("Total Items    :", totalItems);
-console.log("Discount       : Rp" + discount.toLocaleString("id-ID"));
-console.log("Free Shipping  :", isPremiumMember);
-console.log("Shipping Cost  : Rp" + shippingCost.toLocaleString("id-ID"));
-console.log("Final Payment  : Rp" + finalPayment.toLocaleString("id-ID"));
+console.log("Subtotal:", subtotal)
+console.log("Total Items:", totalItems)
+console.log("Discount Applied:", subtotal > 1000000 ? "Yes" : "No")
+console.log("Final Payment:", finalPayment)
+console.log("Premiun:", isPremium ? "FreeShipping" : "No FreeShipping")

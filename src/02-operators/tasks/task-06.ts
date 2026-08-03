@@ -13,3 +13,21 @@
  * - Discount amount
  * - Final payment
  */
+
+const internetPrice : number = 8000
+const discount : number = 0.15
+const hour : number = 7
+const minute : number = 35
+const totalminute : number = (hour * 60) + minute
+const remainingMinute : number = totalminute % 60
+const chargehour : number = Math.ceil (totalminute / 60)
+const totalpayment : number = internetPrice * chargehour
+const discountAmmount : number = totalpayment * discount
+const finalPayment : number = totalpayment - discountAmmount
+
+console.log ("Total Playing time in minutes : ", totalminute)
+console.log ("Remaining Minutes : ", remainingMinute)
+console.log ("Total Billed Hours : ", chargehour)
+console.log ("Total Payment Before Discount : ", totalpayment)
+console.log ("Discount Amount : ", discountAmmount)
+console.log ("Final Payment : ", finalPayment)
