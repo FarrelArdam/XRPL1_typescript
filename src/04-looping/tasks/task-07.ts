@@ -9,12 +9,34 @@
  */
 
 const attendances = [
-  { name: "Alya", present: true },
-  { name: "Budi", present: true },
-  { name: "Citra", present: false },
-  { name: "Dimas", present: true },
-  { name: "Eka", present: false },
-  { name: "Fajar", present: true },
-  { name: "Gita", present: true },
-  { name: "Hana", present: false }
+    { name: "Alya", present: true },
+    { name: "Budi", present: true },
+    { name: "Citra", present: false },
+    { name: "Dimas", present: true },
+    { name: "Eka", present: false },
+    { name: "Fajar", present: true },
+    { name: "Gita", present: true },
+    { name: "Hana", present: false }
 ];
+
+let presentCount: number = 0;
+let absentCount: number = 0;
+
+console.log("Absent Students:");
+
+for (let i = 0; i < attendances.length; i++) {
+
+    if (attendances[i].present) {
+        presentCount++;
+    } else {
+        absentCount++;
+        console.log(attendances[i].name);
+    }
+}
+
+const attendancePercentage: number =
+    (presentCount / attendances.length) * 100;
+
+console.log("Present Students:", presentCount);
+console.log("Absent Students:", absentCount);
+console.log("Attendance Percentage:", attendancePercentage + "%");
