@@ -21,3 +21,19 @@
  * 3. Display the bonus result inside the function.
  * 4. Call the function for every employee.
  */
+
+function bonus(
+    employeename : string,
+    scoreperform : number
+): void {
+
+    if (scoreperform >= 85){
+        console.log(employeename + ": Bonus Approved")
+    } else {
+        console.log(employeename + ": Bonus Not Approved")
+    }
+}
+
+bonus("John Cena", 92)
+bonus("Undertaker", 76)
+bonus("Rey Mysterio", 88)

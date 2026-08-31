@@ -30,17 +30,31 @@ const scores = [
 ];
 
 function findHighestScore(scores: number[]): number {
-
+    return Math.max(...scores);
 }
 
 function findLowestScore(scores: number[]): number {
-
+    return Math.min(...scores);
 }
 
 function calculateAverage(scores: number[]): number {
-    
+    let total = 0;
+
+    for (const score of scores) {
+        total += score;
+    }
+
+    return total / scores.length;
 }
 
 function countPassedStudents(scores: number[]): number {
+    let passed = 0;
 
+    for (const score of scores) {
+        if (score >= 75) {
+            passed++;
+        }
+    }
+
+    return passed;
 }
