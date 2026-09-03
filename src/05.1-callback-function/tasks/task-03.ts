@@ -1,6 +1,11 @@
 /**
  * An online store has the following products:
  */
+
+type product = {
+    name: String,
+    price: number
+}
 const products = [
     { name: "Keyboard", price: 850000 },
     { name: "Mouse", price: 275000 },
@@ -21,3 +26,37 @@ const products = [
  * 
  * Instead of creating a separate loop for every operation, the developer creates a reusable processing function.
  */
+
+function processProduct(
+    products: product[],
+    callback: (product: product) => void
+): void {
+    for (let i = 0; i < products.length; i++) {
+        callback(products[i]);
+    }
+}
+
+function DisplayProduct(product: product) {
+    console.log(product.name, "-", product.price);
+}
+
+function ExpensiveProduct(product: product) {
+    if (product.price > 1000000) {
+        console.log(product.name, "-", product.price);
+    }
+}
+
+function DiscountProduct(product: product) {
+    if (product.price > 500000) {
+        let discount = product.price * 0.1;
+        console.log(product.name, "-", discount);
+    }
+}
+
+processProduct(products, DisplayProduct);
+
+console.log("Produk mahal:");
+processProduct(products, ExpensiveProduct);
+
+console.log("Produk dengan diskon 10%:");
+processProduct(products, DiscountProduct);

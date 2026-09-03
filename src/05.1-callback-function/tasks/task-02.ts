@@ -30,14 +30,29 @@ function processScores(
     callback: (score: number) => void
 ): void {
     // implementation
+    for (let i = 0; i < scores.length; i++) {
+        callback(scores[i])        
+    }
 }
 
 function printScore(score: number) {
     // implementation
+    console.log(`Score: ${score}`)
 }
 
 function showGrade(score: number) {
     // implementation
+    let grade: String = ``
+    if (score >= 90) {
+        grade = `A`
+    } else if (score >= 80) {
+        grade = `B`
+    } else if (score >= 70) {
+        grade = `C`
+    } else {
+        grade = `D`
+    }
+    console.log(`Score: ${score}, grade: ${grade}`)
 }
 
 

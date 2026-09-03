@@ -12,9 +12,9 @@
  *  - Attendance status.
  *  - Final recommendation.
  * 
- * Recommendation Rules:
+ * recommendation Rules:
  * ----------------------------------------------------------------|
- * | Condition                      | Recommendation               |
+ * | Condition                      | recommendation               |
  * | ------------------------------ | ---------------------------- |
  * | Score ≥ 90 AND attendance ≥ 90 | Excellent                    |
  * | Score ≥ 75 AND attendance ≥ 90 | Good                         |
@@ -27,6 +27,19 @@
  * - It should only process the students and execute the callback.
  */
 
+type student= {
+    name: String,
+    score: number,
+    attendance: number
+}
+
+type STATUS = `PASS` | `FAIL` 
+type recommendation = `Excellent` | `Good` | `Improve Attendance` | `Improve Academic Performance`
+type STUDENT_SUCCESFULL= student & { 
+    Status: STATUS, 
+    Recommendation: recommendation
+    }
+
 const students = [
     { name: "Alya", score: 92, attendance: 96 },
     { name: "Budi", score: 68, attendance: 88 },
@@ -35,3 +48,44 @@ const students = [
     { name: "Eka", score: 95, attendance: 82 },
     { name: "Fajar", score: 79, attendance: 97 }
 ];
+
+function StudentSuccesfull(selectedStudent: student): STUDENT_SUCCESFULL {
+    let status:STATUS = `FAIL`
+
+    if (selectedStudent.score >= 75 && selectedStudent.attendance >= 90) {
+        status = `PASS`
+    }
+
+    let recommendation: recommendation = `Improve Academic Performance`
+    if (selectedStudent.score >= 90 && selectedStudent.attendance >= 90) {
+        recommendation = `Excellent`
+    } else if (selectedStudent.score >= 75 && selectedStudent.attendance >= 90) {
+        recommendation = `Good`
+    } else if (selectedStudent.score >= 75 && selectedStudent.attendance < 90) {
+        recommendation = `Improve Attendance`
+    }
+    
+
+    return {
+        ...selectedStudent,
+        Status: status,
+        Recommendation: recommendation
+    }
+}
+
+function processStudents<T>(
+    arr: student[],
+    callback: (student: student) => T
+): T[] {
+    let result: T[] = []
+
+    for (let i = 0; i < arr.length; i++) {
+        result.push(callback(arr[i]))
+    }
+
+    return result
+}
+
+const studentAcademicInfo = processStudents(students, StudentSuccesfull)
+
+console.log(studentAcademicInfo)
