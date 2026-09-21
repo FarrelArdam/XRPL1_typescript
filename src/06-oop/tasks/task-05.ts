@@ -43,6 +43,71 @@
  * getInventoryValue(): calculate price × stock
  */
 
+class Product {
+    productId: string;
+    productName: string;
+    private price: number;
+    private stock: number;
+
+    constructor(
+        productId: string,
+        productName: string,
+        price: number,
+        stock: number
+    ) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.stock = stock;
+    }
+
+    addStock(quantity: number): void {
+        if (quantity > 0) {
+            this.stock += quantity;
+            console.log("Stock berhasil ditambahkan.");
+        } else {
+            console.log("Quantity harus lebih dari 0.");
+        }
+    }
+
+    removeStock(quantity: number): void {
+        if (quantity <= 0) {
+            console.log("Quantity harus lebih dari 0.");
+        } else if (quantity > this.stock) {
+            console.log("Stock tidak mencukupi.");
+        } else {
+            this.stock -= quantity;
+            console.log("Stock berhasil dikurangi.");
+        }
+    }
+
+    changePrice(newPrice: number): void {
+        if (newPrice > 0) {
+            this.price = newPrice;
+            console.log("Harga berhasil diubah.");
+        } else {
+            console.log("Harga harus lebih dari 0.");
+        }
+    }
+
+    isAvailable(): boolean {
+        return this.stock > 0;
+    }
+
+    getInventoryValue(): number {
+        return this.price * this.stock;
+    }
+
+    showProductInfo(): void {
+        console.log("Product ID:", this.productId);
+        console.log("Product Name:", this.productName);
+        console.log("Price:", this.price);
+        console.log("Stock:", this.stock);
+        console.log("Available:", this.isAvailable());
+        console.log("Inventory Value:", this.getInventoryValue());
+    }
+}
+
 const laptop = new Product(
     "PRD001",
     "Gaming Laptop",
@@ -59,3 +124,5 @@ laptop.changePrice(14500000);
 console.log(laptop.isAvailable());
 
 console.log(laptop.getInventoryValue());
+
+laptop.showProductInfo();

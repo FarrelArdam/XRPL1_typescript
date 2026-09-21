@@ -34,10 +34,93 @@
  * for get value of package weight
  */
 
+class Shipping {
+  public trackingNumber: string
+  public destination: string
+  private packageWeight: number
+
+  constructor(trackingNumber: string, destination: string, packageWeight: number) {
+    this.trackingNumber = trackingNumber
+    this.destination = destination
+    this.packageWeight = packageWeight
+    }
+    getWeight(): number {
+      return this.packageWeight
+    }
+    calculateCost(): number {
+      return 0
+    }
+}
+
+class RegularShipping extends Shipping {
+    calculateCost(): number {
+      console.log(`---------------------------------`)
+      console.log(`Tracking: ${this.trackingNumber}`)
+      console.log(`Destination: ${this.destination}`)
+      console.log(`Weight: ${this.getWeight()}`)
+      return this.getWeight() * 10000
+    }
+}
+
+class ExpressShipping extends Shipping {
+    calculateCost(): number {
+      console.log(`---------------------------------`)
+      console.log(`Tracking: ${this.trackingNumber}`)
+      console.log(`Destination: ${this.destination}`)
+      console.log(`Weight: ${this.getWeight()}`)
+      return this.getWeight() * 20000
+    }
+}
+
+class SameDayShipping extends Shipping {
+    calculateCost(): number {
+      console.log(`---------------------------------`)
+      console.log(`Tracking: ${this.trackingNumber}`)
+      console.log(`Destination: ${this.destination}`)
+      console.log(`Weight: ${this.getWeight()}`)
+      return this.getWeight() * 30000
+    }
+}
+
+class InternationalShipping extends Shipping {
+    calculateCost(): number {
+      console.log(`---------------------------------`)
+      console.log(`Tracking: ${this.trackingNumber}`)
+      console.log(`Destination: ${this.destination}`)
+      console.log(`Weight: ${this.getWeight()}`)
+      return this.getWeight() * 100000
+    }
+}
+
+const regularShipping = new RegularShipping(
+    "REG001",
+    "Malang",
+    3
+)
+
+const expressShipping = new ExpressShipping(
+    "EXP001",
+    "Surabaya",
+    2
+)
+
+const sameDayShipping = new SameDayShipping(
+    "SMD001",
+    "Jakarta",
+    4
+)
+
+const internationalShipping = new InternationalShipping(
+    "INT001",
+    "Singapore",
+    2
+)
+
 const shipments: Shipping[] = [
   regularShipping,
   expressShipping,
-  sameDayShipping
+  sameDayShipping,
+  internationalShipping
 ];
 
 for (const shipment of shipments) {

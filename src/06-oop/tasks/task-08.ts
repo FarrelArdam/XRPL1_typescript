@@ -26,22 +26,49 @@
  */
 
 class Payment {
+    public transactionId: string;
+    public amount: number;
+    constructor(
+        transactionId: string, amount: number
+    ) {
+        this.transactionId = transactionId;
+        this.amount = amount;
+    }
     calculateFee(): number {
         return 0
     }
 }
 
 class CreditCardPayment extends Payment {
-
+    calculateFee(): number {
+        console.log(`Credit card`)
+        console.log(`Transaction: ${this.transactionId}`)
+        console.log(`Amount: ${this.amount}`)
+        return this.amount * 0.02;
+    }
 }
 
 class BankTransferPayment extends Payment {
-
+    calculateFee(): number {
+        console.log(`Bank transfer fee`)
+        console.log(`Transaction: ${this.transactionId}`)
+        console.log(`Amount: ${this.amount}`)
+        return 5000;
+    }
 }
 
 class EWalletPayment extends Payment {
-
+    calculateFee(): number {
+        console.log(`E-wallet`)
+        console.log(`Transaction: ${this.transactionId}`)
+        console.log(`Amount: ${this.amount}`)
+        return this.amount * 0.01;
+    }
 }
+
+const creditCardPayment = new CreditCardPayment("TRX001", 1000000);
+const bankTransferPayment = new BankTransferPayment("TRX002", 750000);
+const eWalletPayment = new EWalletPayment("TRX003", 500000);
 
 const payments: Payment[] = [
     creditCardPayment,
